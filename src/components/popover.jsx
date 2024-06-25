@@ -99,7 +99,7 @@ function Popover({ trigger, className, item }) {
     return (
         <Dialog onOpenChange={handleOpenChange}>
             <DialogTrigger className={className}>{trigger}</DialogTrigger>
-            <DialogContent className={cn("h-fit p-4 lg:p-10 w-[300px] lg:w-full", bgColor)}>
+            <DialogContent className={cn("h-fit p-4 lg:p-10 w-[300px] lg:w-full rounded-lg ", bgColor)}>
                 <DialogHeader>
                     <Input
                         className="max-w-xl"
