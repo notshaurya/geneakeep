@@ -97,9 +97,9 @@ function Popover({ trigger, className, item }) {
     }, [item]);
 
     return (
-        <Dialog onOpenChange={handleOpenChange}>
+        <Dialog onOpenChange={handleOpenChange} className="w-10">
             <DialogTrigger className={className}>{trigger}</DialogTrigger>
-            <DialogContent className={cn(" h-fit p-10", bgColor)}>
+            <DialogContent className={cn("h-fit p-10", bgColor)}>
                 <DialogHeader>
                     <Input
                         className="max-w-xl"
@@ -119,10 +119,10 @@ function Popover({ trigger, className, item }) {
                     </div>
                 </RadioGroup>
                 {inputType == "text" && (
-                    <Textarea className="h-[400px]" onChange={(e) => setContent({ ...content, text: e.target.value })} value={content?.text} />
+                    <Textarea className="h-[200px]" onChange={(e) => setContent({ ...content, text: e.target.value })} value={content?.text} />
                 )}
                 {inputType == "list" && (
-                    <div className="flex flex-col gap-2 h-[400px] overflow-auto border-2 border-white p-3">
+                    <div className="flex flex-col gap-2 h-[200px] overflow-auto border-2 border-white p-3">
                         {content.list && content.list.length ? (
                             content.list.map((item) => (
                                 <div key={item.id} className="flex gap-2 justify-center items-center">
@@ -148,8 +148,8 @@ function Popover({ trigger, className, item }) {
                     </div>
                 )}
 
-                <DialogFooter className="flex justify-between items-center w-full">
-                    <div className="flex justify-start items-center gap-2 w-full">
+                <DialogFooter className="flex flex-col lg:flex-row lg: gap-4 justify-center lg:justify-between items-center w-full">
+                    <div className="flex justify-center lg:justify-start items-center gap-2 w-full">
                         {[
                             "bg-white",
                             "bg-blue-500",
