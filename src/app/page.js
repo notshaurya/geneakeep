@@ -1,6 +1,6 @@
 import AddNote from "@/components/add-note";
-import { Input } from "@/components/input";
 import NotesArea from "@/components/notes-area";
+import Search from "@/components/search";
 import { ScrollText } from "lucide-react";
 import Image from "next/image";
 
@@ -12,12 +12,12 @@ export default function Home() {
                     <ScrollText size={35} className="" stroke="orange" />
                     <h2 className=" text-lg sm:text-2xl font-bold text-indigo-600">Genea Keep</h2>
                 </div>
-                <div className="w-[50%] sm:w-[65%]">
-                    <Input className="bg-slate-200 w-full" placeholder="Search" />
+                <div className="w-[45%] sm:w-[65%]">
+                    <Search />
                 </div>
                 <a href="https://shauryasuman.netlify.app/" target="_blank">
                     <div className="rounded-full bg-white overflow-hidden size-10 hover:cursor-pointer">
-                        <Image src={"/pic.jpg"} width={50} height={50} />
+                        <Image src={"/pic.jpg"} width={50} height={50} alt="myimage" />
                     </div>
                 </a>
             </div>

@@ -10,6 +10,7 @@ import Popover from "./popover";
 function NotesArea() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.saveNoteReducer);
+    const search = useSelector((state) => state.searchReducer);
 
     function preventDefault(e) {
         e.preventDefault();
@@ -31,7 +32,7 @@ function NotesArea() {
 
         if (!dropNoteElement) return;
 
-        let dropId = Number(dropNoteElement.getAttribute("idNumber"));
+        let dropId = Number(dropNoteElement.getAttribute("idnumber"));
         let dragId = draggedData.id;
 
         if (dropId == dragId) return;
@@ -70,13 +71,16 @@ function NotesArea() {
             onDragEnd={preventDefault}
         >
             {data?.length ? (
-                data.map((item) => (
-                    <Popover
-                        trigger={<Note data={item} className="" />}
-                        item={item}
-                        className="min-w-[50%] max-w-[50%] sm:min-w-60 sm:max-w-60 hover:cursor-none"
-                    />
-                ))
+                data
+                    .filter((item) => search == "" || item.text.toLowerCase().includes(search.toLowerCase()))
+                    .map((item) => (
+                        <Popover
+                            key={item.id}
+                            trigger={<Note data={item} />}
+                            item={item}
+                            className="min-w-[50%] max-w-[50%] sm:min-w-60 sm:max-w-60 hover:cursor-none"
+                        />
+                    ))
             ) : (
                 <div className="flex flex-col justify-center items-center">
                     <ScrollText size={300} className="" stroke="#cbd5e1" />
