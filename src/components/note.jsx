@@ -8,7 +8,7 @@ function Note({ data }) {
         e.dataTransfer.setData("note", JSON.stringify(data));
     }
     return (
-        <div draggable onDragStart={handleDragStart} className="p-4 sm:p-6 active:cursor-move hover:cursor-default  ">
+        <div id="note" idNumber={data.id} draggable onDragStart={handleDragStart} className="p-4 sm:p-6 active:cursor-move hover:cursor-default  ">
             <Card className={cn("h-fit overflow-hidden border-[px] border-slate-400 text-clip hover:cursor-pointer ", data.bgColor)}>
                 <CardHeader>
                     <CardTitle className="text-sm font-bold">{data.title}</CardTitle>

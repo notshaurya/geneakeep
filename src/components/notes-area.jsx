@@ -16,10 +16,44 @@ function NotesArea() {
     }
 
     function handleDrop(e) {
-        debugger;
         e.preventDefault();
+        let noteElement;
         let item = JSON.parse(e.dataTransfer.getData("note"));
-        // dispatch(saveNoteAction([...data, item]));
+
+        let element = e.target;
+        while (element) {
+            if (element.id == "note") {
+                noteElement = element;
+                break;
+            }
+            element = element.parentNode;
+        }
+
+        if (!noteElement) return;
+
+        let dropId = noteElement.getAttribute("idNumber");
+        let dragId = item.id;
+
+        if (dropId == dragId) return;
+
+        let newData = [...data];
+
+        let dropIndex;
+        let dragIndex;
+
+        for (let index = 0; index < newData.length; index++) {
+            const element = newData[index];
+            if (element.id == dragId) {
+                dragIndex = index;
+            }
+            if (element.id == dropId) {
+                dropIndex = index;
+            }
+        }
+
+        newData.splice(dragIndex, 1);
+        newData.splice(dropIndex, 0, item);
+        dispatch(saveNoteAction(newData));
     }
 
     useEffect(() => {
@@ -28,7 +62,13 @@ function NotesArea() {
     }, []);
 
     return (
-        <div className="flex flex-wrap justify-center items-start w-full" onDrop={handleDrop} onDragOver={preventDefault} onDragEnd={preventDefault}>
+        <div
+            id="notes-area"
+            className="flex flex-wrap justify-center items-start w-full"
+            onDrop={handleDrop}
+            onDragOver={preventDefault}
+            onDragEnd={preventDefault}
+        >
             {data?.length ? (
                 data.map((item) => (
                     <Popover
