@@ -6,7 +6,7 @@ import { Label } from "./label";
 function Note({ data }) {
     return (
         <div>
-            <Card className={cn("w-fit max-w-72 h-fit overflow-hidden shadow-lg", data.bgColor)}>
+            <Card className={cn("w-fit max-w-72 min-w-32 lg:min-w-44 h-fit overflow-hidden border-2 border-slate-400", data.bgColor)}>
                 <CardHeader>
                     <CardTitle className="font-bold">{data.title}</CardTitle>
                 </CardHeader>

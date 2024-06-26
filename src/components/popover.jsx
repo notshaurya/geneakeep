@@ -10,6 +10,7 @@ import { Label } from "./label";
 import { RadioGroup, RadioGroupItem } from "./radio-group";
 import { Textarea } from "./textarea";
 import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
 
 function Popover({ trigger, className, item }) {
     const dispatch = useDispatch();
@@ -122,7 +123,7 @@ function Popover({ trigger, className, item }) {
                     <Textarea className="h-[200px]" onChange={(e) => setContent({ ...content, text: e.target.value })} value={content?.text} />
                 )}
                 {inputType == "list" && (
-                    <div className="flex flex-col gap-2 h-[200px] overflow-auto border-2 border-white p-3">
+                    <div className="flex flex-col gap-2 h-[200px] overflow-auto border-2 border-white p-3 bg-white">
                         {content.list && content.list.length ? (
                             content.list.map((item) => (
                                 <div key={item.id} className="flex gap-2 justify-center items-center">
@@ -142,8 +143,13 @@ function Popover({ trigger, className, item }) {
                         ) : (
                             <></>
                         )}
-                        <Button variant="outline" className="max-w-40 bg-white" onClick={handleAddList}>
-                            Add List Item
+                        <Button
+                            variant="outline"
+                            className={cn("max-w-40 w-fit flex justify-center items-center px-4 gap-2", bgColor)}
+                            onClick={handleAddList}
+                        >
+                            <Plus className="" />
+                            Add List
                         </Button>
                     </div>
                 )}
@@ -152,13 +158,13 @@ function Popover({ trigger, className, item }) {
                     <div className="flex justify-center lg:justify-start items-center gap-2 w-full">
                         {[
                             "bg-white",
-                            "bg-blue-500",
-                            "bg-pink-500",
-                            "bg-purple-500",
-                            "bg-yellow-500",
-                            "bg-green-500",
-                            "bg-orange-500",
-                            "bg-red-500",
+                            "bg-blue-300",
+                            "bg-pink-300",
+                            "bg-purple-300",
+                            "bg-yellow-300",
+                            "bg-green-300",
+                            "bg-orange-300",
+                            "bg-red-300",
                         ].map((color, index) => (
                             <Button
                                 key={index}
@@ -168,7 +174,9 @@ function Popover({ trigger, className, item }) {
                         ))}
                     </div>
                     <DialogClose className="">
-                        <Button variant="outline">Save</Button>
+                        <Button variant="outline" className="bg-black text-white">
+                            Save
+                        </Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>
