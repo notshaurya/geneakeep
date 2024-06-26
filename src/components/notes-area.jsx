@@ -31,7 +31,11 @@ function NotesArea() {
         <div className="flex flex-wrap justify-center items-start w-full" onDrop={handleDrop} onDragOver={preventDefault} onDragEnd={preventDefault}>
             {data?.length ? (
                 data.map((item) => (
-                    <Popover trigger={<Note data={item} className="" />} item={item} className="min-w-[50%] max-w-[50%] sm:min-w-60 sm:max-w-60" />
+                    <Popover
+                        trigger={<Note data={item} className="" />}
+                        item={item}
+                        className="min-w-[50%] max-w-[50%] sm:min-w-60 sm:max-w-60 hover:cursor-none"
+                    />
                 ))
             ) : (
                 <div className="flex flex-col justify-center items-center">
