@@ -17,22 +17,22 @@ function NotesArea() {
 
     function handleDrop(e) {
         e.preventDefault();
-        let noteElement;
-        let item = JSON.parse(e.dataTransfer.getData("note"));
+        let dropNoteElement;
+        let draggedData = JSON.parse(e.dataTransfer.getData("note"));
 
         let element = e.target;
         while (element) {
             if (element.id == "note") {
-                noteElement = element;
+                dropNoteElement = element;
                 break;
             }
             element = element.parentNode;
         }
 
-        if (!noteElement) return;
+        if (!dropNoteElement) return;
 
-        let dropId = noteElement.getAttribute("idNumber");
-        let dragId = item.id;
+        let dropId = Number(dropNoteElement.getAttribute("idNumber"));
+        let dragId = draggedData.id;
 
         if (dropId == dragId) return;
 
@@ -42,17 +42,17 @@ function NotesArea() {
         let dragIndex;
 
         for (let index = 0; index < newData.length; index++) {
-            const element = newData[index];
-            if (element.id == dragId) {
+            const e = newData[index];
+            if (e.id == dragId) {
                 dragIndex = index;
             }
-            if (element.id == dropId) {
+            if (e.id == dropId) {
                 dropIndex = index;
             }
         }
 
         newData.splice(dragIndex, 1);
-        newData.splice(dropIndex, 0, item);
+        newData.splice(dropIndex, 0, draggedData);
         dispatch(saveNoteAction(newData));
     }
 
