@@ -4,8 +4,8 @@ import NotesArea from "@/components/notes-area";
 export default function Home() {
     return (
         <>
-            <h1 className="text-4xl font-bold text-blue-500">
-                Track your notes with <span className="underline underline-offset-8 text-blue-800 font-extrabold">Genea Keep</span>
+            <h1 className="text-4xl font-bold text-indigo-600">
+                Genea Keep: Track your notes <span className="   font-extrabold text-indigo-600">better !</span>
             </h1>
             <AddNote />
             <NotesArea />

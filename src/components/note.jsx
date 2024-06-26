@@ -4,9 +4,12 @@ import { Checkbox } from "./checkbox";
 import { Label } from "./label";
 
 function Note({ data }) {
+    function handleDragStart(e) {
+        e.dataTransfer.setData("note", JSON.stringify(data));
+    }
     return (
-        <div>
-            <Card className={cn("w-fit max-w-32 min-w-32 sm:min-w-44 h-fit overflow-hidden border-2 border-slate-400", data.bgColor)}>
+        <div draggable onDragStart={handleDragStart} className="p-4 sm:p-6 active:cursor-move  ">
+            <Card className={cn("h-fit overflow-hidden border-2 border-slate-400 text-clip", data.bgColor)}>
                 <CardHeader>
                     <CardTitle className="text-sm font-bold">{data.title}</CardTitle>
                 </CardHeader>
