@@ -200,7 +200,7 @@ function Popover({ trigger, className, item }) {
                         ))}
                     </div>
                     <DialogClose className="">
-                        <Button variant="outline" className="bg-black text-white">
+                        <Button variant="outline" className="bg-black text-white mt-4 sm:mt-0">
                             Save
                         </Button>
                     </DialogClose>
