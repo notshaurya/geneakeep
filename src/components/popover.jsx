@@ -69,11 +69,13 @@ function Popover({ trigger, className, item }) {
                         }
                     });
                     dispatch(saveNoteAction(newData));
+                    localStorage.setItem("data", JSON.stringify(newData));
                 } else {
                     let newData = [...notes];
                     const index = newData.findIndex((item) => item.id === content.id);
                     newData.splice(index, 1);
                     dispatch(saveNoteAction(newData));
+                    localStorage.setItem("data", JSON.stringify(newData));
                 }
             }
 
