@@ -196,15 +196,13 @@ function Popover({ trigger, className, item }) {
                         ].map((color, index) => (
                             <Button
                                 key={index}
-                                className={cn("size-6 p-0 rounded-full border-2 border-black", color)}
+                                className={cn("size-6 p-0 rounded-full border-[1px] border-black", color)}
                                 onClick={() => handleColorChange(color)}
                             ></Button>
                         ))}
                     </div>
                     <DialogClose className="">
-                        <Button variant="outline" className="bg-black text-white mt-4 sm:mt-0">
-                            Save
-                        </Button>
+                        <Button className="bg-black text-white mt-4 sm:mt-0">Save</Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>
