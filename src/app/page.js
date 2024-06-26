@@ -1,5 +1,3 @@
-"use client";
-
 import AddNote from "@/components/add-note";
 import { Input } from "@/components/input";
 import NotesArea from "@/components/notes-area";
