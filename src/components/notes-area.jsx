@@ -1,10 +1,11 @@
 "use client";
 
+import saveNoteAction from "@/actions/save-note-action";
+import { ScrollText } from "lucide-react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Note from "./note";
 import Popover from "./popover";
-import { useEffect } from "react";
-import saveNoteAction from "@/actions/save-note-action";
 
 function NotesArea() {
     const dispatch = useDispatch();
@@ -29,9 +30,14 @@ function NotesArea() {
     return (
         <div className="flex flex-wrap justify-center items-start w-full" onDrop={handleDrop} onDragOver={preventDefault} onDragEnd={preventDefault}>
             {data?.length ? (
-                data.map((item) => <Popover trigger={<Note data={item} />} item={item} className="min-w-[50%] max-w-[50%] sm:min-w-60 sm:max-w-60" />)
+                data.map((item) => (
+                    <Popover trigger={<Note data={item} className="" />} item={item} className="min-w-[50%] max-w-[50%] sm:min-w-60 sm:max-w-60" />
+                ))
             ) : (
-                <></>
+                <div className="flex flex-col justify-center items-center">
+                    <ScrollText size={300} className="" stroke="#cbd5e1" />
+                    <p className="text-3xl text-slate-400 font-bold">Notes you add appear here !</p>
+                </div>
             )}
         </div>
     );
