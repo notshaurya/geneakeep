@@ -16,7 +16,7 @@ function NotesArea() {
     }, []);
 
     return (
-        <div className="flex flex-wrap gap-4 lg:gap-10 justify-start items-start w-full">
+        <div className="flex flex-wrap gap-4 sm:gap-10 justify-start sm:justify-center items-start w-full">
             {data?.length ? data.map((item) => <Popover trigger={<Note data={item} />} item={item} />) : <></>}
         </div>
     );

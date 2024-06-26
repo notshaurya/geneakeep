@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
     return (
         <StoreProvider>
             <html lang="en" className="flex justify-center">
-                <body className="h-full w-full flex flex-col justify-center items-center max-w-screen-2xl gap-10 p-4 lg:p-10 bg-slate-200">
+                <body className="h-full w-full flex flex-col justify-center items-center max-w-screen-2xl gap-10 p-4 sm:p-10 bg-slate-200">
                     {children}
                 </body>
             </html>

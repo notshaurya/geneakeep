@@ -124,7 +124,7 @@ function Popover({ trigger, className, item }) {
     return (
         <Dialog onOpenChange={handleOpenChange}>
             <DialogTrigger className={className}>{trigger}</DialogTrigger>
-            <DialogContent className={cn("h-fit p-4 lg:p-10 w-[300px] lg:w-full rounded-lg ", bgColor)}>
+            <DialogContent className={cn("h-fit p-4 sm:p-6 w-[300px] sm:w-full rounded-lg ", bgColor)}>
                 <DialogHeader>
                     <Input
                         className="max-w-xl"
@@ -147,7 +147,7 @@ function Popover({ trigger, className, item }) {
                     <Textarea className="h-[200px]" onChange={(e) => setContent({ ...content, text: e.target.value })} value={content?.text} />
                 )}
                 {inputType == "list" && (
-                    <div className="flex flex-col gap-2 h-[200px] overflow-auto border-2 border-white p-3 bg-white">
+                    <div className="flex flex-col gap-2 h-[200px] overflow-auto rounded-md border-2 border-white p-3 bg-white">
                         {content.list && content.list.length ? (
                             content.list.map((item) => (
                                 <div key={item.id} className="flex gap-2 justify-center items-center">
@@ -178,8 +178,8 @@ function Popover({ trigger, className, item }) {
                     </div>
                 )}
 
-                <DialogFooter className="flex flex-col lg:flex-row lg: gap-4 justify-center lg:justify-between items-center w-full">
-                    <div className="flex justify-center lg:justify-start items-center gap-2 w-full">
+                <DialogFooter className="flex flex-col sm:flex-row sm:gap-4 justify-center sm:justify-between items-center w-full">
+                    <div className="flex justify-center sm:justify-start items-center gap-2 w-full">
                         {[
                             "bg-white",
                             "bg-blue-300",
