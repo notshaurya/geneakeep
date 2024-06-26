@@ -1,6 +1,8 @@
 "use client";
 import saveNoteAction from "@/actions/save-note-action";
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from "@/components/dialog";
+import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "./button";
@@ -9,8 +11,6 @@ import { Input } from "./input";
 import { Label } from "./label";
 import { RadioGroup, RadioGroupItem } from "./radio-group";
 import { Textarea } from "./textarea";
-import { cn } from "@/lib/utils";
-import { Plus } from "lucide-react";
 
 function Popover({ trigger, className, item }) {
     const dispatch = useDispatch();

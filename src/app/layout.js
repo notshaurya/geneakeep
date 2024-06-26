@@ -2,7 +2,7 @@ import StoreProvider from "@/store/storeProvider";
 import "./globals.css";
 
 export const metadata = {
-    title: "Genea Notes",
+    title: "Genea Keep",
     description: "A notes app",
 };
 

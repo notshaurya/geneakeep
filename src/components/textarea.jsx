@@ -10,7 +10,7 @@ const Textarea = React.forwardRef(({ className, ...props }, ref) => {
                 className
             )}
             ref={ref}
-            rezise={'none'}
+            rezise={"none"}
             {...props}
         />
     );
