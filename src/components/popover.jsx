@@ -19,40 +19,64 @@ function Popover({ trigger, className, item }) {
     const [bgColor, setBgColor] = useState("bg-white");
     const notes = useSelector((state) => state.saveNoteReducer);
 
-    function handleOpenChange(isOpening) {
-        if (!isOpening) {
-            // If there is content present, save it
-            if (content && (content.title || content.text || content.list?.length)) {
-                let newData = [...notes];
-                let newContent = { ...content };
-                newContent.bgColor = bgColor;
-                if (inputType === "text") {
-                    newContent.isText = true;
-                    newContent.isList = false;
-                    newContent.list = [];
-                } else if (inputType === "list") {
-                    newContent.isList = true;
-                    newContent.isText = false;
-                    newContent.text = "";
-                }
-                if (newContent.id) {
-                    const index = newData.findIndex((item) => item.id === newContent.id);
-                    newData[index] = newContent;
-                } else {
-                    newContent.id = Date.now();
-                    newData.push(newContent);
-                }
-                newContent.list.sort((a, b) => {
-                    if (a.checked === b.checked) {
-                        return 0;
-                    } else if (a.checked) {
-                        return 1;
-                    } else {
-                        return -1;
-                    }
-                });
-                dispatch(saveNoteAction(newData));
+    function allNotEmpty(list) {
+        for (let index = 0; index < list.length; index++) {
+            const element = list[index];
+            if (element.value != "") {
+                return true;
             }
+        }
+        return false;
+    }
+
+    function handleOpenChange(isOpening) {
+        if (!isOpening && content) {
+            // If there is content present, save it
+            if (content) {
+                if (
+                    content &&
+                    (content.title ||
+                        (inputType === "text" && content.text) ||
+                        (content.list?.length && inputType === "list" && allNotEmpty(content.list)))
+                ) {
+                    let newData = [...notes];
+                    let newContent = { ...content };
+                    newContent.bgColor = bgColor;
+                    if (inputType === "text") {
+                        newContent.isText = true;
+                        newContent.isList = false;
+                        newContent.list = [];
+                    } else if (inputType === "list") {
+                        newContent.isList = true;
+                        newContent.isText = false;
+                        newContent.text = "";
+                    }
+                    if (newContent.id) {
+                        const index = newData.findIndex((item) => item.id === newContent.id);
+                        newData[index] = newContent;
+                    } else {
+                        newContent.id = Date.now();
+                        newData.push(newContent);
+                    }
+
+                    newContent.list.sort((a, b) => {
+                        if (a.checked === b.checked) {
+                            return 0;
+                        } else if (a.checked) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    });
+                    dispatch(saveNoteAction(newData));
+                } else {
+                    let newData = [...notes];
+                    const index = newData.findIndex((item) => item.id === content.id);
+                    newData.splice(index, 1);
+                    dispatch(saveNoteAction(newData));
+                }
+            }
+
             // Setting default values on close
             setContent({});
             setInputType("text");
