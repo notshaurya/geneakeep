@@ -59,7 +59,7 @@ function Popover({ trigger, className, item }) {
                         newData.push(newContent);
                     }
 
-                    newContent.list.sort((a, b) => {
+                    newContent.list?.sort((a, b) => {
                         if (a.checked === b.checked) {
                             return 0;
                         } else if (a.checked) {
