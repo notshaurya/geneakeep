@@ -53,8 +53,10 @@ function NotesArea() {
         }
 
         newData.splice(dragIndex, 1);
+        dropIndex = dragIndex < dropIndex ? dropIndex - 1 : dropIndex;
         newData.splice(dropIndex, 0, draggedData);
         dispatch(saveNoteAction(newData));
+        localStorage.setItem("data", JSON.stringify(newData));
     }
 
     useEffect(() => {
