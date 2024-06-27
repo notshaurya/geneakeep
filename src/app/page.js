@@ -22,7 +22,7 @@ export default function Home() {
                 </a>
             </div>
             <h1 className="text-4xl font-bold text-indigo-600 ">
-                Track your notes <span className="   font-extrabold text-indigo-600">better!</span>
+                Track your notes <span className="font-extrabold text-indigo-600">better!</span>
             </h1>
             <AddNote />
             <NotesArea />
