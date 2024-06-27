@@ -72,7 +72,7 @@ function NotesArea() {
         >
             {data?.length ? (
                 data
-                    .filter((item) => search == "" || item.text.toLowerCase().includes(search.toLowerCase()))
+                    .filter((item) => search == "" || (item.title?.toLowerCase() ?? "").includes(search.toLowerCase()))
                     .map((item) => (
                         <Popover
                             key={item.id}
